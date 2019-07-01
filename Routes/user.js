@@ -75,11 +75,12 @@ router.get("/showuser",Auth,function(req,res){
 
 //user update
 router.put('/updateuser/:id',function(req,res){
-    userid = req.param.id.toString();
+    userid = req.body._id;
     console.log(userid);
     console.log(req.body);
-    User.findByIdAndUpdate(uid,req.body,{new: true}, (err,User) => {
+    User.findByIdAndUpdate(userid,req.body,{new: true}, (err,User) => {
     res.send(User);
+    console.log(User);
         });
     })
 

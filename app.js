@@ -12,12 +12,11 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 require('./DB/mongoose');
-app.use('/location',express.static('./location'));
+app.use('/books',express.static('./book'));
 
 
 const userRoute=require('./Routes/user');
 const bookRoute = require('./Routes/book');
-
 
 app.use('/users',userRoute);
 app.use('/books',bookRoute);

@@ -12,6 +12,9 @@ const bookSchema = mongoose.Schema({
     },
     Bookprice:{
         type:Number
+    },
+    BookImageName:{
+        type:String
     }
 });
 const Book=mongoose.model("Book",bookSchema);
