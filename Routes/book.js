@@ -3,8 +3,11 @@ const router=express.Router();
 const Book=require("../model/Book");
 const mongoose=require("mongoose");
 const multer=require("multer");
-const path=require('path');
+
 const Auth=require('../Middleware/auth');
+const path=require('path');
+const async=require('async');
+
 require('../DB/mongoose');
 
 
@@ -28,11 +31,11 @@ var imageFileFilter = (req, file, cb) => {
 var upload = multer({
   storage: storage,
   fileFilter: imageFileFilter,
-  limits: { fileSize: 100000000000 }
+  limits: { fileSize: 1000000000 }
 });
 
   router.post('/uploadbook', upload.single('imageFile'), (req, res) => {
-      res.send(req.file.filename)
+      res.send(req.file);
       console.log(req.file)
   });
 
@@ -86,6 +89,35 @@ router.delete('/deletebook/:id',Auth, function (req, res) {
    }) ;
    });
 
+
+  router.get("/showonebook/:id",Auth,function(req,res){
+    id=req.params.id.toString();
+    Book.findById(id).then(function(book){
+        console.log(book);
+        // res.json(houseModel);
+        res.send(book);
+    }).catch(function(e){
+        res.send(e);
+    });
+  });
+  
+  router.get('/this',Auth,function(req,res){
+    res.send(req.resta);
+})
+
+//update book details
+router.put('/updatebook/:id',function(req,res){
+  // userid = req.param.id.toString();
+  uid = req.body._id;
+  console.log(uid);
+  console.log(req.body._id);
+  // console.log(userid);
+  console.log(req.body);
+    Book.findByIdAndUpdate(uid,req.body,{new: true}, (err,book) => {
+  res.send(book);
+  console.log(book);
+      });
+  });
 
   module.exports=router;
 

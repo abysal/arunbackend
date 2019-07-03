@@ -11,7 +11,7 @@ const bookSchema = mongoose.Schema({
         type:String
     },
     Bookprice:{
-        type:Number
+        type:String
     },
     BookImageName:{
         type:String
