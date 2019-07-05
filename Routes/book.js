@@ -8,6 +8,7 @@ const Auth=require('../Middleware/auth');
 const path=require('path');
 const async=require('async');
 
+
 require('../DB/mongoose');
 
 
@@ -36,7 +37,7 @@ var upload = multer({
 
   router.post('/uploadbook', upload.single('imageFile'), (req, res) => {
       res.send(req.file);
-      console.log(req.file)
+      console.log(req.file);
   });
 
 
@@ -102,7 +103,7 @@ router.delete('/deletebook/:id',Auth, function (req, res) {
   });
   
   router.get('/this',Auth,function(req,res){
-    res.send(req.resta);
+    res.send(req.book);
 })
 
 //update book details

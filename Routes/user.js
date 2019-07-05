@@ -73,16 +73,9 @@ router.get("/showuser",Auth,function(req,res){
     })   
 })    
 
-//user update
-router.put('/updateuser/:id',function(req,res){
-    userid = req.body._id;
-    console.log(userid);
-    console.log(req.body);
-    User.findByIdAndUpdate(userid,req.body,{new: true}, (err,User) => {
-    res.send(User);
-    console.log(User);
-        });
-    })
+
+
+    
 
 //upload profile picture
 var storage = multer.diskStorage({
@@ -101,14 +94,36 @@ var imageFileFilter = (req, file, cb) => {
 var upload = multer({
     storage: storage,
     fileFilter: imageFileFilter,
-    limits: { fileSize: 1000000 }
+    limits: { fileSize: 1000000000 }
 });
 router.post('/uploadImg', upload.single('imageFile'), (req, res) => {
-       res.send(req.file)
+       res.send(req.file);
+       console.log(req.file)
         });
 
+        
         
 router.get('/this',Auth,function(req,res){
     res.send(req.user);
 })
+//delete user
+router.delete('/deleteuser/:id',Auth, function (req, res) {    
+            
+    console.log(req.params.id);
+     User.findByIdAndDelete(req.params.id).then(function(){
+         res.send("Successfully deleted");
+     }).catch(function(e){
+         res.send(e);
+     }) ;
+     });
+//user update
+router.put('/updateuser',function(req,res){
+    userid = req.body._id;
+    console.log(userid);
+    console.log(req.body._id);
+    User.findByIdAndUpdate(userid,req.body,{new: true}, (err,User) => {
+    res.send(User);
+    console.log(User);
+        });
+    })
 module.exports=router;
