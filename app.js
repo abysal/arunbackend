@@ -18,9 +18,11 @@ app.use(express.static("./ProfilePicture"));
 
 const userRoute=require('./Routes/user');
 const bookRoute = require('./Routes/book');
+const buyRoute=require('./Routes/buy');
 
 app.use('/users',userRoute);
 app.use('/books',bookRoute);
+app.use('/buys',buyRoute);
 
 module.exports=app;
 
