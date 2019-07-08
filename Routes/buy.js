@@ -20,7 +20,7 @@ router.post('/bookbook/:id', Auth, function (req, res) {
     uid = req.params.id.toString();
     console.log(uid);
     
-    const bookb = new Buy({ bid: uid, status: "Booked", uid: req.user._id });
+    const bookb = new Buy({ bid: uid, status: "Bought", uid: req.user._id });
     bookb.save().then(function () {
       res.send('fine');
     })
