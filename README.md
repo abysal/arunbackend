@@ -5,10 +5,13 @@ Abhishek Rai
 
 Batch: Jan19D
 
-Brief description of the domain of your project!
+Online book store to promote book stores
 
 ## List of Main Features
-List out 3/4 main technical features of your project
+CRUD of Books
+CRUD of Users
+Can buy books
+Cancel the books bought
 
 ## API Documentation
 List out your main APIs and its sample input and output!
