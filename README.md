@@ -9,8 +9,11 @@ Online book store to promote book stores
 
 ## List of Main Features
 CRUD of Books
+
 CRUD of Users
+
 Can buy books
+
 Cancel the books bought
 
 ## API Documentation
