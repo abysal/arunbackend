@@ -14,7 +14,7 @@ Can buy books
 Cancel the books bought
 
 ## API Documentation
-List out your main APIs and its sample input and output!
+
 Some of this projects main APIs are:
 model,
 Routes folder which contains the routes for example:
