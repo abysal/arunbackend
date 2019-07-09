@@ -37,7 +37,7 @@ describe('User  Schema test', () => {
         console.log(id)
         return User.findByIdAndUpdate(id,userup, { new: true })
             .then((userupd) => {
-                expect(userupd.Username).toEqual('hello2');
+                expect(userupd.Username).toEqual('he');
             });
     });
     it('to test the delete user is working or not', async () => { 
